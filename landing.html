@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthTech AI Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #2D3748;
+            background-color: #F7FAFC;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            padding: 20px 0;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            position: relative;
+        }
+
+        .nav-content svg {
+            height: 40px;
+            width: auto;
+            position: static;
+            transform: none;
+        }
+
+        .logo-img {
+            width: 120px;
+            height: auto;
+        }
+
+        .hero {
+            padding: 120px 0;
+            text-align: center;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+            /* Add this to contain the SVG */
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            /* Adjust this value to make pattern more/less subtle */
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: #1A202C;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #4A5568;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background-color: transparent;  /* Changed from #E53E3E to transparent */
+            border: 2px solid #E53E3E;     /* Added red border */
+            color: #E53E3E;                /* Changed from white to red */
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 40px;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;  /* Changed from #C53030 to transparent */
+            border-color: grey;         /* Added darker red border on hover */
+            color: grey;                /* Changed from white to darker red */
+        }
+
+        .features {
+            padding: 100px 0;
+        }
+
+        .about-section p.bold {
+            font-weight: 800; 
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card h3 {
+            color: #2D3748;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .feature-card p {
+            color: #4A5568;
+        }
+
+        .stats {
+            background-color: #F7FAFC;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .stats::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, transparent, #4A5568, transparent);
+            opacity: 0.15;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+
+        }
+
+        .stat-item h4 {
+            font-size: 2.5rem;
+            color: #E53E3E;
+            margin-bottom: 8px;
+        }
+
+        .stat-item p {
+            color: #4A5568;
+            font-size: 1.1rem;
+        }
+
+        .about-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .email-symbol {
+            opacity: 0.6;  /* or any value between 0 and 1 */
+            color: #666;   /* optional: also make it slightly gray */
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            color: #4A5568;
+            font-size: 1.1rem;
+        }
+
+        .careers {
+            padding: 60px 0;
+            background-color: #F7FAFC;
+            text-align: center;
+        }
+
+        .careers p {
+            font-size: 1.1rem;
+            color: #4A5568;
+            margin-bottom: 16px;
+        }
+
+        .careers a {
+            color: #E53E3E;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .careers a:hover {
+            text-decoration: underline;
+        }
+
+        nav {
+            padding: 20px 0;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            overflow: visible;
+            /* Ensures SVG can overflow if needed */
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            /* Added for better positioning control */
+        }
+
+        .nav-content svg {
+            width: 400px;
+            height: auto;
+            position: relative;
+            top: 100px;
+            /* Increased this value to move it down */
+            /* OR try margin-top if position/top doesn't work */
+            margin-top: 50px;
+        }
+
+
+        .typing-container {
+            position: relative;
+        }
+
+        .typing-text {
+            opacity: 0;
+            animation: reveal 0s steps(1) forwards;
+        }
+
+        @keyframes reveal {
+            to {
+                opacity: 1
+            }
+        }
+
+        .delay-1 {
+            animation-delay: calc(var(--char-index) * 33ms);
+            /* Slowed down from 30ms to 33ms */
+        }
+
+        .delay-2 {
+            animation-delay: calc(2s + (var(--char-index) * 33ms));
+            /* Slowed down from 30ms to 33ms */
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+        <svg class="hero-background" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+            <!-- Top-left corner elements -->
+            <path d="M0 0 L300 0 L0 200" stroke="#DC143C" stroke-width="20" fill="none" opacity="0.85" />
+    
+            <!-- Bottom-right corner elements -->
+            <path d="M700 600 L1000 600 L1000 400" stroke="#DC143C" stroke-width="20" fill="none" opacity="0.75" />
+    
+            <!-- Top-right geometric shape -->
+            <path d="M700 0 L1000 0 L1000 200" stroke="black" stroke-width="25" fill="none" opacity="0.8" />
+    
+            <!-- Bottom-left geometric shape -->
+            <path d="M0 400 L0 600 L300 600" stroke="black" stroke-width="25" fill="none" opacity="0.7" />
+    
+            <!-- Angular accent lines -->
+            <path d="M800 100 L900 200" stroke="#DC143C" stroke-width="30" fill="none" opacity="0.65" />
+    
+            <path d="M100 400 L200 500" stroke="black" stroke-width="30" fill="none" opacity="0.85" />
+    
+            <!-- Corner brackets -->
+            <path d="M50 50 L50 150 L150 150" stroke="#DC143C" stroke-width="35" fill="none" opacity="0.8" />
+    
+            <path d="M850 450 L850 550 L950 550" stroke="black" stroke-width="35" fill="none" opacity="0.75" />
+    
+            <!-- Geometric shapes in corners -->
+            <rect x="50" y="250" width="100" height="100" transform="rotate(45 100 300)" 
+                  stroke="#DC143C" stroke-width="20" fill="none" opacity="0.7" />
+    
+            <rect x="850" y="50" width="100" height="100" transform="rotate(45 900 100)" 
+                  stroke="black" stroke-width="20" fill="none" opacity="0.9" />
+    
+            <!-- Additional non-overlapping elements -->
+            <path d="M400 0 L500 0 L450 50" stroke="#DC143C" stroke-width="25" fill="none" opacity="0.8" />
+            
+            <path d="M400 600 L500 600 L450 550" stroke="black" stroke-width="25" fill="none" opacity="0.75" />
+    
+            <!-- Side accents -->
+            <path d="M0 300 L50 350" stroke="#DC143C" stroke-width="30" fill="none" opacity="0.7" />
+            
+            <path d="M950 300 L1000 350" stroke="black" stroke-width="30" fill="none" opacity="0.85" />
+        </svg>
+        <div class="container typing-container">
+            <h1>
+                <span class="typing-text delay-1" style="--char-index: 0;">A</span><span class="typing-text delay-1"
+                    style="--char-index: 1;">I</span><span class="typing-text delay-1"
+                    style="--char-index: 2;">-</span><span class="typing-text delay-1"
+                    style="--char-index: 3;">P</span><span class="typing-text delay-1"
+                    style="--char-index: 4;">o</span><span class="typing-text delay-1"
+                    style="--char-index: 5;">w</span><span class="typing-text delay-1"
+                    style="--char-index: 6;">e</span><span class="typing-text delay-1"
+                    style="--char-index: 7;">r</span><span class="typing-text delay-1"
+                    style="--char-index: 8;">e</span><span class="typing-text delay-1" style="--char-index: 9;">d</span>
+                <span class="typing-text delay-1" style="--char-index: 10;">H</span><span class="typing-text delay-1"
+                    style="--char-index: 11;">e</span><span class="typing-text delay-1"
+                    style="--char-index: 12;">a</span><span class="typing-text delay-1"
+                    style="--char-index: 13;">l</span><span class="typing-text delay-1"
+                    style="--char-index: 14;">t</span><span class="typing-text delay-1"
+                    style="--char-index: 15;">h</span><span class="typing-text delay-1"
+                    style="--char-index: 16;">c</span><span class="typing-text delay-1"
+                    style="--char-index: 17;">a</span><span class="typing-text delay-1"
+                    style="--char-index: 18;">r</span><span class="typing-text delay-1"
+                    style="--char-index: 19;">e</span><br>
+                <span class="typing-text delay-1" style="--char-index: 20;">S</span><span class="typing-text delay-1"
+                    style="--char-index: 21;">o</span><span class="typing-text delay-1"
+                    style="--char-index: 22;">l</span><span class="typing-text delay-1"
+                    style="--char-index: 23;">u</span><span class="typing-text delay-1"
+                    style="--char-index: 24;">t</span><span class="typing-text delay-1"
+                    style="--char-index: 25;">i</span><span class="typing-text delay-1"
+                    style="--char-index: 26;">o</span><span class="typing-text delay-1"
+                    style="--char-index: 27;">n</span><span class="typing-text delay-1"
+                    style="--char-index: 28;">s</span>
+            </h1>
+            <p>
+                <span class="typing-text delay-2" style="--char-index: 0;">T</span><span class="typing-text delay-2"
+                    style="--char-index: 1;">r</span><span class="typing-text delay-2"
+                    style="--char-index: 2;">a</span><span class="typing-text delay-2"
+                    style="--char-index: 3;">n</span><span class="typing-text delay-2"
+                    style="--char-index: 4;">s</span><span class="typing-text delay-2"
+                    style="--char-index: 5;">f</span><span class="typing-text delay-2"
+                    style="--char-index: 6;">o</span><span class="typing-text delay-2"
+                    style="--char-index: 7;">r</span><span class="typing-text delay-2"
+                    style="--char-index: 8;">m</span><span class="typing-text delay-2"
+                    style="--char-index: 9;">i</span><span class="typing-text delay-2"
+                    style="--char-index: 10;">n</span><span class="typing-text delay-2"
+                    style="--char-index: 11;">g</span> <span class="typing-text delay-2"
+                    style="--char-index: 12;">c</span><span class="typing-text delay-2"
+                    style="--char-index: 13;">l</span><span class="typing-text delay-2"
+                    style="--char-index: 14;">i</span><span class="typing-text delay-2"
+                    style="--char-index: 15;">n</span><span class="typing-text delay-2"
+                    style="--char-index: 16;">i</span><span class="typing-text delay-2"
+                    style="--char-index: 17;">c</span><span class="typing-text delay-2"
+                    style="--char-index: 18;">a</span><span class="typing-text delay-2"
+                    style="--char-index: 19;">l</span> <span class="typing-text delay-2"
+                    style="--char-index: 20;">w</span><span class="typing-text delay-2"
+                    style="--char-index: 21;">o</span><span class="typing-text delay-2"
+                    style="--char-index: 22;">r</span><span class="typing-text delay-2"
+                    style="--char-index: 23;">k</span><span class="typing-text delay-2"
+                    style="--char-index: 24;">f</span><span class="typing-text delay-2"
+                    style="--char-index: 25;">l</span><span class="typing-text delay-2"
+                    style="--char-index: 26;">o</span><span class="typing-text delay-2"
+                    style="--char-index: 27;">w</span><span class="typing-text delay-2"
+                    style="--char-index: 28;">s</span> <span class="typing-text delay-2"
+                    style="--char-index: 29;">w</span><span class="typing-text delay-2"
+                    style="--char-index: 30;">i</span><span class="typing-text delay-2"
+                    style="--char-index: 31;">t</span><span class="typing-text delay-2"
+                    style="--char-index: 32;">h</span> <span class="typing-text delay-2"
+                    style="--char-index: 33;">i</span><span class="typing-text delay-2"
+                    style="--char-index: 34;">n</span><span class="typing-text delay-2"
+                    style="--char-index: 35;">t</span><span class="typing-text delay-2"
+                    style="--char-index: 36;">e</span><span class="typing-text delay-2"
+                    style="--char-index: 37;">l</span><span class="typing-text delay-2"
+                    style="--char-index: 38;">l</span><span class="typing-text delay-2"
+                    style="--char-index: 39;">i</span><span class="typing-text delay-2"
+                    style="--char-index: 40;">g</span><span class="typing-text delay-2"
+                    style="--char-index: 41;">e</span><span class="typing-text delay-2"
+                    style="--char-index: 42;">n</span><span class="typing-text delay-2"
+                    style="--char-index: 43;">t</span> <span class="typing-text delay-2"
+                    style="--char-index: 44;">a</span><span class="typing-text delay-2"
+                    style="--char-index: 45;">u</span><span class="typing-text delay-2"
+                    style="--char-index: 46;">t</span><span class="typing-text delay-2"
+                    style="--char-index: 47;">o</span><span class="typing-text delay-2"
+                    style="--char-index: 48;">m</span><span class="typing-text delay-2"
+                    style="--char-index: 49;">a</span><span class="typing-text delay-2"
+                    style="--char-index: 50;">t</span><span class="typing-text delay-2"
+                    style="--char-index: 51;">i</span><span class="typing-text delay-2"
+                    style="--char-index: 52;">o</span><span class="typing-text delay-2"
+                    style="--char-index: 53;">n</span> <span class="typing-text delay-2"
+                    style="--char-index: 54;">f</span><span class="typing-text delay-2"
+                    style="--char-index: 55;">o</span><span class="typing-text delay-2"
+                    style="--char-index: 56;">r</span> <span class="typing-text delay-2"
+                    style="--char-index: 57;">b</span><span class="typing-text delay-2"
+                    style="--char-index: 58;">e</span><span class="typing-text delay-2"
+                    style="--char-index: 59;">t</span><span class="typing-text delay-2"
+                    style="--char-index: 60;">t</span><span class="typing-text delay-2"
+                    style="--char-index: 61;">e</span><span class="typing-text delay-2"
+                    style="--char-index: 62;">r</span> <span class="typing-text delay-2"
+                    style="--char-index: 63;">p</span><span class="typing-text delay-2"
+                    style="--char-index: 64;">a</span><span class="typing-text delay-2"
+                    style="--char-index: 65;">t</span><span class="typing-text delay-2"
+                    style="--char-index: 66;">i</span><span class="typing-text delay-2"
+                    style="--char-index: 67;">e</span><span class="typing-text delay-2"
+                    style="--char-index: 68;">n</span><span class="typing-text delay-2"
+                    style="--char-index: 69;">t</span> <span class="typing-text delay-2"
+                    style="--char-index: 70;">o</span><span class="typing-text delay-2"
+                    style="--char-index: 71;">u</span><span class="typing-text delay-2"
+                    style="--char-index: 72;">t</span><span class="typing-text delay-2"
+                    style="--char-index: 73;">c</span><span class="typing-text delay-2"
+                    style="--char-index: 74;">o</span><span class="typing-text delay-2"
+                    style="--char-index: 75;">m</span><span class="typing-text delay-2"
+                    style="--char-index: 76;">e</span><span class="typing-text delay-2"
+                    style="--char-index: 77;">s</span> <span class="typing-text delay-2"
+                    style="--char-index: 78;">a</span><span class="typing-text delay-2"
+                    style="--char-index: 79;">n</span><span class="typing-text delay-2"
+                    style="--char-index: 80;">d</span> <span class="typing-text delay-2"
+                    style="--char-index: 81;">r</span><span class="typing-text delay-2"
+                    style="--char-index: 82;">e</span><span class="typing-text delay-2"
+                    style="--char-index: 83;">d</span><span class="typing-text delay-2"
+                    style="--char-index: 84;">u</span><span class="typing-text delay-2"
+                    style="--char-index: 85;">c</span><span class="typing-text delay-2"
+                    style="--char-index: 86;">e</span><span class="typing-text delay-2"
+                    style="--char-index: 87;">d</span> <span class="typing-text delay-2"
+                    style="--char-index: 88;">c</span><span class="typing-text delay-2"
+                    style="--char-index: 89;">o</span><span class="typing-text delay-2"
+                    style="--char-index: 90;">s</span><span class="typing-text delay-2"
+                    style="--char-index: 91;">t</span><span class="typing-text delay-2"
+                    style="--char-index: 92;">s</span>
+            </p>
+            <a href="#demo" class="cta-button">Request Demo</a>
+        </div>
+    </section>
+
+
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Workflow Optimization</h3>
+                    <p>Streamline clinical processes and reduce administrative burden with AI-powered automation
+                        solutions.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Quality Care</h3>
+                    <p>Enhance patient care quality while maintaining safety and compliance standards.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Cost Reduction</h3>
+                    <p>Optimize resource allocation and reduce operational costs without compromising care quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container about-content">
+            <p class="bold">
+                Our mission is to optimize clinician workflows while providing safe, high quality care to patients in a
+                cost-effective manner. We are currently focused on improving outcomes in patients with inflammatory bowel
+                disease (which includes Crohn's Disease and Ulcerative Colitis) but plan to address other lifelong chronic
+                conditions in the future.
+            </p>
+            <p>Millions of Americans suffer from Inflammatory Bowel Disease (IBD), yet fewer than a thousand IBD experts
+                are available to treat them. Each day, physicians must manually review massive quantities of unstructured,
+                unfiltered data in their patients' Electronic Medical Records (EMRs), which is time-consuming and inefficient.
+                This inefficiency increases the cost of care, worsens patient outcomes, and limits the ability of physicians to
+                adopt proactive, preventative care. The overburdened system leaves physicians unable to fully address patient needs..</p>
+            <p>To address this, we are building a highly configurable Generative AI platform to autonomously Monitor patient Electronic
+                Medical Records (GAMER). GAMER will aggregate clinical, laboratory (routine and multi-omic), radiologic, and immunohistologic
+                patient data, then distill and analyze it to accurately predict the likelihood of a relapse. GAMER will then automatically initiate
+                a dialogue with high-risk patients through a HIPPA-compliant digital interface for any clinical updates, autonomously coordinate minimally
+                invasive laboratory testing, and finally submit a concise, intuitive, and actionable plan for physician validation and implementation.</p>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h4>45%</h4>
+                    <p>Less Time Reviewing EMRs</p>
+                </div>
+                <div class="stat-item">
+                    <h4>26%</h4>
+                    <p>Less Patient Readmissions</p>
+                </div>
+                <div class="stat-item">
+                    <h4>39%</h4>
+                    <p>Departmental Cost Savings</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="careers">
+        <div class="container">
+            <p>Want to help us revolutionize healthcare?</p>
+            <p>Send us an email at vitek <span class="email-symbol">[dot]</span> llc <span class="email-symbol">[dot]</span> us <span class="email-symbol">[at]</span> gmail <span class="email-symbol">[dot]</span> com</a></p>
+        </div>
+    </section>
+</body>
+
+</html>
